@@ -93,6 +93,31 @@ class ViewController: UIViewController {
     
     
     
+    // MARK: -  Quick sort
+    
+    func applyQuickSort(arr:[Int]) -> [Int]{
+        var less = [Int]()
+        var equal = [Int]()
+        var greater = [Int]()
+        if arr.count > 1{
+            let pivot = arr[0]
+            for i in arr{
+                if i < pivot{
+                    less.append(i)
+                }else if i > pivot{
+                    greater.append(i)
+                }else{
+                    equal.append(i)
+                }
+            }
+            return applyQuickSort(arr: less) + equal + applyQuickSort(arr: greater)
+        }else{
+            return arr
+        }
+    }
+    
+    
+    
     // MARK: -  Bubble sort
     
     func sortByBubbleSort(arr:[Int]) -> [Int]{
@@ -111,9 +136,8 @@ class ViewController: UIViewController {
     }
     
     
-    
+            
     // MARK: -  Number of island problem
-    
     
     var mutableGrid : [[String]]!
     
@@ -135,7 +159,6 @@ class ViewController: UIViewController {
         return islandCount
     }
     
-    
     private func dfs_destroyIslands(x:Int,y:Int,gridd:[[String]]){
         guard gridd.indices.contains(x), gridd[x].indices.contains(y), gridd[x][y] == "1" else {return}
         mutableGrid[x][y] = "0"
@@ -149,7 +172,7 @@ class ViewController: UIViewController {
         //right
         dfs_destroyIslands(x: x + 1, y: y, gridd: mutableGrid)
     }
-    
+         
     // MARK: -  Reverse
     func reverse(_ x: Int) -> Int {
         var number = x
@@ -171,7 +194,7 @@ class ViewController: UIViewController {
         }
         return reversedNumber
     }
-    
+       
     
     // MARK: -  Intersection of two unsorted array
     
@@ -192,8 +215,8 @@ class ViewController: UIViewController {
         return Array(result)
         
     }
-    
-    
+                        
+                 
     // MARK: -  Merge SORT
     
     func SortByMergeSort(array:[Int]) -> [Int]{
@@ -268,7 +291,7 @@ class ViewController: UIViewController {
             }
             numbersDict[value] = index
         }
-        
+                      
         return [0,0]
     }
     
@@ -290,8 +313,8 @@ class ViewController: UIViewController {
         
         return result
     }
-   
-    
+             
+              
     // MARK: -  Merge Sort
     
     func mergeSort(arr:[Int]) -> [Int]{
@@ -314,10 +337,8 @@ class ViewController: UIViewController {
         }
         return merged + left + right
     }
-    
-    
-    
-    
+   
+                            
     
     fileprivate func findCommon(arr:[String]) -> String{
         var dict = [String:Int]()
